@@ -11,4 +11,8 @@ function Controller1($scope, Data) {
 
 function Controller2($scope, Data) {
     $scope.data = Data;
+
+    $scope.capitalize = function(text) {
+        return text.toUpperCase();
+    }
 }
