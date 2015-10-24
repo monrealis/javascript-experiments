@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<div ng-app="">
-    <input type="text" ng-model="data.message"/>
-
-    <h1>{{data.message}}</h1>
+<div ng-app="HelloWorldApp">
+    <div ng-controller="HelloWorldController">
+        <h1>{{greeting}}</h1>
+    </div>
 </div>
 
 </body>
