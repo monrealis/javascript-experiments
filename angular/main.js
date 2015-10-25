@@ -1,4 +1,4 @@
-var app = angular.module('MyApp', []);
+var app = angular.module('myApp', []);
 app.controller('Controller1', Controller1);
 app.controller('Controller2', Controller2);
 app.factory('Data', createData);
