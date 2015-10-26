@@ -13,9 +13,9 @@
         <input type="text" ng-model="search.$"/>
 
         <table>
-            <tr ng-repeat="name in names | filter:search">
-                <td>{{name.first}}</td>
-                <td>{{name.last}}</td>
+            <tr ng-repeat="name in names | orderBy:'-first' | limitTo:-10 | filter:search">
+                <td>{{name.first | uppercase}}</td>
+                <td>{{name.last | lowercase}}</td>
             </tr>
         </table>
 
