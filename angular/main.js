@@ -27,7 +27,7 @@ function capitalize(text) {
 
 function getHelloWorldDirective() {
     return {
-        restrict: 'M',
+        restrict: 'A',
         link: function() {
             alert('from directive')
         }
