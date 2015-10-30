@@ -26,9 +26,12 @@ function capitalize(text) {
 }
 
 function getHelloWorldDirective() {
-    return {
-        restrict: 'C',
-        link: function() {
-        }
+    return function(scope, element) {
+        element.bind('mouseenter', function(e) {
+            e.target.style.color = 'red';
+        });
+        element.bind('mouseleave', function(e) {
+            e.target.style.color = '';
+        });
     }
 }
