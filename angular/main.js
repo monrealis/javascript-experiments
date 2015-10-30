@@ -29,7 +29,6 @@ function getHelloWorldDirective() {
     return {
         restrict: 'C',
         link: function() {
-            alert('from directive')
         }
     }
 }
