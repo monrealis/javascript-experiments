@@ -13,7 +13,3 @@ function createNames() {
 app.run(function ($rootScope, $log) {
     $rootScope.$log = $log;
 })
-
-app.config(function($logProvider) {
-    $logProvider.debugEnabled(false);
-})
