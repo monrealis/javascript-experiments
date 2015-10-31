@@ -13,9 +13,11 @@
         <input type="text" ng-model="search.$"/>
 
         <table>
-            <tr ng-repeat="name in names | orderBy:'-first' | limitTo:-10 | filter:search">
+            <tr ng-repeat="name in names | orderBy:'-first' | limitTo:-10 | filter:search" ng-click="event = $event">
+                <td>{{$index + 1}}</td>
                 <td>{{name.first | uppercase}}</td>
                 <td>{{name.last | lowercase}}</td>
+                <td>{{event.pageY}}</td>
             </tr>
         </table>
 
