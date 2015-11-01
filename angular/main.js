@@ -26,9 +26,9 @@ function capitalize(text) {
 }
 
 function getHelloWorldDirective() {
-    return function(scope, element) {
+    return function(scope, element, attrs) {
         element.bind('mouseenter', function(e) {
-            e.target.style.color = 'red';
+            e.target.style.color = attrs.hw;
         });
         element.bind('mouseleave', function(e) {
             e.target.style.color = '';
