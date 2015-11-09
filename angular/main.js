@@ -35,3 +35,32 @@ function getHelloWorldDirective() {
         });
     }
 }
+
+app.directive('mydiv', function () {
+    return {
+        restrict: 'E',
+        scope: {},
+        controller: function ($scope) {
+            $scope.features = ['first'];
+
+            this.addSecond = function () {
+                $scope.features.push('second');
+            }
+        },
+        link: function (scope, element) {
+            element.addClass('nothing')
+            element.bind('click', function () {
+                alert('Here i am: ' + scope.features);
+            })
+        }
+    };
+})
+
+app.directive('myatt', function () {
+    return {
+        require: 'mydiv',
+        link: function (scope, element, attrs, myDivController) {
+            myDivController.addSecond();
+        }
+    };
+})
