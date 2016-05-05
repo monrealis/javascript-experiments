@@ -22,12 +22,12 @@ describe("taker", function () {
 
     it("should take unique numbers", function () {
         var hash = [];
-        this.taker.take(10).forEach(function (n) {
-            if (hash[n + '-'] == null)
-                hash[n + '-'] = 0;
-            hash[n + '-']++;
+        this.taker.take(30).forEach(function (n) {
+            if (hash[n] == null)
+                hash[n] = 0;
+            hash[n]++;
         })
-        chai.expect(Object.keys(hash).length).to.equal(10)
+        chai.expect(Object.keys(hash).length).to.equal(30)
     })
 
     function takeTen() {
