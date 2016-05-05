@@ -7,7 +7,7 @@ var Taker = function (maxNumber) {
 Taker.prototype.take = function (n) {
     var r = [];
     for (var i = 0; i < n; ++i)
-        r.push(i);
+        r.push(Math.floor(Math.random() * 60));
     return r;
 };
 
@@ -23,11 +23,11 @@ describe("taker", function () {
     it("should take unique numbers", function () {
         var hash = [];
         this.taker.take(10).forEach(function (n) {
-            if (hash[n] == null)
-                hash[n] = 0;
-            hash[n]++;
+            if (hash[n + '-'] == null)
+                hash[n + '-'] = 0;
+            hash[n + '-']++;
         })
-        chai.expect(hash.length).to.equal(10)
+        chai.expect(Object.keys(hash).length).to.equal(10)
     })
 
     function takeTen() {
