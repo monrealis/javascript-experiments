@@ -42,8 +42,4 @@ describe("taker", function () {
         var hash = toHash(this.taker.take(10));
         chai.expect(Object.keys(hash).length).to.equal(10)
     })
-
-    function takeTen() {
-        return this.taker.take(10)
-    }
 });
