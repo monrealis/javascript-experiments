@@ -81,19 +81,11 @@ GameSimulator.prototype.getNumberOfShared = function () {
 };
 
 
-describe("Game simulator", function () {
+describe("game simulator", function () {
     beforeEach(function () {
         this.simulator = new GameSimulator(1);
-        this.simulator.guesser = {
-            take: function (n) {
-                return generateSequence(0, n);
-            }
-        };
-        this.simulator.roller = {
-            take: function (n) {
-                return generateSequence(0, n);
-            }
-        }
+        this.simulator.guesser = new SequenceTaker();
+        this.simulator.roller = new SequenceTaker();
     });
 
     it("Should mark all the games as won", function () {
@@ -101,13 +93,27 @@ describe("Game simulator", function () {
     });
 
     it("Should mark all the games as last", function () {
-        this.simulator.roller.take = function () {
-            return generateSequence(1, 20);
-        };
+        this.simulator.roller.take = createSequenceGenerator(1, 20);
         chai.expect(this.simulator.getNumberOfWins()).to.equal(0);
     })
 });
 
+var SequenceTaker = function () {
+};
+
+SequenceTaker.prototype.take = createSequenceGeneratorFrom(0);
+
+function createSequenceGeneratorFrom(first) {
+    return function (n) {
+        return generateSequence(first, n);
+    };
+}
+
+function createSequenceGenerator(first, n) {
+    return function () {
+        return generateSequence(first, n);
+    };
+}
 
 function generateSequence(first, n) {
     var r = [];
