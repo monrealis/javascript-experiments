@@ -20,8 +20,12 @@ Taker.prototype.take = function (n) {
 };
 
 describe("taker", function () {
+    var takerThis;
+    
     beforeEach(function () {
-        this.taker = new Taker(60);
+        this.max = 60;
+        this.taker = new Taker(this.max);
+        takerThis = this;
     });
 
     it("should take 10 numbers within a range", function () {
@@ -35,11 +39,17 @@ describe("taker", function () {
                 if (hash[n] == null)
                     hash[n] = 0;
                 hash[n]++;
-            })
+            });
             return hash;
         }
 
         var hash = toHash(this.taker.take(10));
         chai.expect(Object.keys(hash).length).to.equal(10)
+    });
+
+    it("should return numbers in range [0, max)", function () {
+        this.taker.take(10).forEach(function (n) {
+            chai.expect(n).to.be.at.least(0).below(takerThis.max)
+        })
     })
 });
