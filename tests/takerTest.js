@@ -21,7 +21,7 @@ Taker.prototype.take = function (n) {
 
 describe("taker", function () {
     var takerThis;
-    
+
     beforeEach(function () {
         this.max = 60;
         this.taker = new Taker(this.max);
@@ -53,3 +53,65 @@ describe("taker", function () {
         })
     })
 });
+
+var GameSimulator = function (numberOfGames) {
+    this.taker = new Taker(60);
+    this.guesser = this.taker;
+    this.roller = this.taker;
+    this.numberOfGames = numberOfGames;
+};
+
+GameSimulator.prototype.getNumberOfWins = function () {
+    var r = 0;
+    for (var i = 0; i < this.numberOfGames; ++i)
+        if (this.getNumberOfShared() == 2)
+            r++;
+    return r;
+};
+
+GameSimulator.prototype.getNumberOfShared = function () {
+    var guesses = this.guesser.take(2);
+    var actual = this.roller.take(20);
+    var r = 0;
+    guesses.forEach(function (guess) {
+        if (actual.indexOf(guess) >= 0)
+            ++r;
+    });
+    return r;
+};
+
+
+describe("Game simulator", function () {
+    beforeEach(function () {
+        this.simulator = new GameSimulator(1);
+        this.simulator.guesser = {
+            take: function (n) {
+                return generateSequence(0, n);
+            }
+        };
+        this.simulator.roller = {
+            take: function (n) {
+                return generateSequence(0, n);
+            }
+        }
+    });
+
+    it("Should mark all the games as won", function () {
+        chai.expect(this.simulator.getNumberOfWins()).to.equal(1);
+    });
+
+    it("Should mark all the games as last", function () {
+        this.simulator.roller.take = function () {
+            return generateSequence(1, 20);
+        };
+        chai.expect(this.simulator.getNumberOfWins()).to.equal(0);
+    })
+});
+
+
+function generateSequence(first, n) {
+    var r = [];
+    for (var i = 0; i < n; ++i)
+        r.push(first + i);
+    return r;
+}
