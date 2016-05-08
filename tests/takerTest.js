@@ -1,4 +1,6 @@
-var chai = require("chai");
+var chai;
+if (typeof require != 'undefined')
+    chai = require("chai");
 
 var Taker = function (maxNumber) {
     this.maxNumber = maxNumber
