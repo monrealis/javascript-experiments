@@ -10,5 +10,9 @@
     "karma-coverage": "~1.0.0",
     "karma": "~0.13.22",
     "karma-mocha": "~1.0.1"
+  },
+  "devDependencies": {
+    "karma-mocha": "~1.0.1",
+    "karma-chrome-launcher": "~1.0.1"
   }
 }

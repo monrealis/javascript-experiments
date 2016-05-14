@@ -17,4 +17,5 @@ Taker.prototype.take = function (n) {
     return r;
 };
 
-module.exports = Taker;
+if (typeof module != 'undefined')
+    module.exports = Taker;

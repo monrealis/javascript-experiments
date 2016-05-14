@@ -29,4 +29,5 @@ GameSimulator.prototype.getNumberOfShared = function () {
     return r;
 };
 
-module.exports = GameSimulator;
+if (typeof module != 'undefined')
+    module.exports = GameSimulator;
