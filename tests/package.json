@@ -1,4 +1,10 @@
 {
   "name": "tests",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "chai": "~3.5.0",
+    "mocha": "~2.4.5",
+    "karma-coverage": "~1.0.0",
+    "karma": "~0.13.22"
+  }
 }
