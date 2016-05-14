@@ -2,11 +2,13 @@
   "name": "tests",
   "version": "0.0.1",
   "scripts": {
-    "test" : "mocha takerTest.js"
-  }, "dependencies": {
+    "test": "mocha takerTest.js"
+  },
+  "dependencies": {
     "chai": "~3.5.0",
     "mocha": "~2.4.5",
     "karma-coverage": "~1.0.0",
-    "karma": "~0.13.22"
+    "karma": "~0.13.22",
+    "karma-mocha": "~1.0.1"
   }
 }
